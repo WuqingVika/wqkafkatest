@@ -29,7 +29,7 @@ public class Kafka_Consumer_Demo {
         Map<String, List<KafkaStream<byte[], byte[]>>> messageStreams = consumerConnector.createMessageStreams(map);
         //3.消费数据
         List<KafkaStream<byte[], byte[]>> streamList = messageStreams.get("wuqing1");
-        KafkaStream<byte[], byte[]> kafkaStream = streamList.get(0);
+        KafkaStream<byte[], byte[]> kafkaStream = streamList.get(0);//这里改成1就可以消费文件
         ConsumerIterator<byte[], byte[]> iterator = kafkaStream.iterator();
         while (iterator.hasNext()) {
             byte[] message = iterator.next().message();
