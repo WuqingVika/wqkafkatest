@@ -1,0 +1,24 @@
+
+--启动kafka
+nohup /xqliu/kafka_2.11-0.10.1.1/bin/kafka-server-start.sh /xqliu/kafka_2.11-0.10.1.1/config/server.properties > /xqliu/kafka_2.11-0.10.1.1/logs/kafka-server.log 2>&1 &
+--创建kafka topci
+/xqliu/kafka_2.11-0.10.1.1/bin/kafka-topics.sh --create --zookeeper kafka1:2181,kafka2:2181,kafka3:2181 --replication-factor 1 --partitions 2 --topic hello
+--查看kafka的消息信息
+/xqliu/kafka_2.11-0.10.1.1/bin/kafka-topics.sh --describe --zookeeper kafka1:2181,kafka2:2181,kafka3:2181 --topic wuqing1
+--查看kafka里边都有哪些topic
+/xqliu/kafka_2.11-0.10.1.1/bin/kafka-topics.sh --list --zookeeper  kafka1:2181,kafka2:2181,kafka3:2181 
+--生产者
+/xqliu/kafka_2.11-0.10.1.1/bin/kafka-console-producer.sh --broker-list  kafka1:9092,kafka2:9092,kafka3:9092 --topic wuqing1
+--消费者
+/xqliu/kafka_2.11-0.10.1.1/bin/kafka-console-consumer.sh --zookeeper kafka1:2181,kafka2:2181,kafka3:2181 --topic wuqing1 --from-beginning
+
+
+
+
+
+
+
+
+
+
+
